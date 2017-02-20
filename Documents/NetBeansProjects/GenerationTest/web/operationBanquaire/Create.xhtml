@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOperationBanquaireTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOperationBanquaireLabel_montant}" for="montant" />
+                    <h:inputText id="montant" value="#{operationBanquaireController.selected.montant}" title="#{bundle.CreateOperationBanquaireTitle_montant}" />
+                    <h:outputLabel value="#{bundle.CreateOperationBanquaireLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{operationBanquaireController.selected.type}" title="#{bundle.CreateOperationBanquaireTitle_type}" />
+                    <h:outputLabel value="#{bundle.CreateOperationBanquaireLabel_dateOperation}" for="dateOperation" />
+                    <h:inputText id="dateOperation" value="#{operationBanquaireController.selected.dateOperation}" title="#{bundle.CreateOperationBanquaireTitle_dateOperation}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOperationBanquaireLabel_compte}" for="compte" />
+                    <h:selectOneMenu id="compte" value="#{operationBanquaireController.selected.compte}" title="#{bundle.CreateOperationBanquaireTitle_compte}" >
+                        <f:selectItems value="#{compteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateOperationBanquaireLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{operationBanquaireController.selected.id}" title="#{bundle.CreateOperationBanquaireTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{operationBanquaireController.create}" value="#{bundle.CreateOperationBanquaireSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{operationBanquaireController.prepareList}" value="#{bundle.CreateOperationBanquaireShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOperationBanquaireIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

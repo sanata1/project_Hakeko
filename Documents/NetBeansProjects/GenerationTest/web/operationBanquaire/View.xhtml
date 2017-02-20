@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOperationBanquaireTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOperationBanquaireLabel_montant}"/>
+                    <h:outputText value="#{operationBanquaireController.selected.montant}" title="#{bundle.ViewOperationBanquaireTitle_montant}"/>
+                    <h:outputText value="#{bundle.ViewOperationBanquaireLabel_type}"/>
+                    <h:outputText value="#{operationBanquaireController.selected.type}" title="#{bundle.ViewOperationBanquaireTitle_type}"/>
+                    <h:outputText value="#{bundle.ViewOperationBanquaireLabel_dateOperation}"/>
+                    <h:outputText value="#{operationBanquaireController.selected.dateOperation}" title="#{bundle.ViewOperationBanquaireTitle_dateOperation}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewOperationBanquaireLabel_compte}"/>
+                    <h:outputText value="#{operationBanquaireController.selected.compte}" title="#{bundle.ViewOperationBanquaireTitle_compte}"/>
+                    <h:outputText value="#{bundle.ViewOperationBanquaireLabel_id}"/>
+                    <h:outputText value="#{operationBanquaireController.selected.id}" title="#{bundle.ViewOperationBanquaireTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{operationBanquaireController.destroyAndView}" value="#{bundle.ViewOperationBanquaireDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOperationBanquaireEditLink}"/>
+                <br />
+                <h:commandLink action="#{operationBanquaireController.prepareCreate}" value="#{bundle.ViewOperationBanquaireCreateLink}" />
+                <br />
+                <h:commandLink action="#{operationBanquaireController.prepareList}" value="#{bundle.ViewOperationBanquaireShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOperationBanquaireIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
