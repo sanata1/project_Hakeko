@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UniversiteDeviceCreateDlg" widgetVar="UniversiteDeviceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUniversiteDeviceTitle}">
+            <h:form id="UniversiteDeviceCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{universiteDeviceController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{universiteDeviceController.selected.id}" title="#{bundle.CreateUniversiteDeviceTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_browser}" for="browser" />
+                        <p:inputText id="browser" value="#{universiteDeviceController.selected.browser}" title="#{bundle.CreateUniversiteDeviceTitle_browser}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_operatingSystem}" for="operatingSystem" />
+                        <p:inputText id="operatingSystem" value="#{universiteDeviceController.selected.operatingSystem}" title="#{bundle.CreateUniversiteDeviceTitle_operatingSystem}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_deviceCategorie}" for="deviceCategorie" />
+                        <p:inputText id="deviceCategorie" value="#{universiteDeviceController.selected.deviceCategorie}" title="#{bundle.CreateUniversiteDeviceTitle_deviceCategorie}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_adressIp}" for="adressIp" />
+                        <p:inputText id="adressIp" value="#{universiteDeviceController.selected.adressIp}" title="#{bundle.CreateUniversiteDeviceTitle_adressIp}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_adressMac}" for="adressMac" />
+                        <p:inputText id="adressMac" value="#{universiteDeviceController.selected.adressMac}" title="#{bundle.CreateUniversiteDeviceTitle_adressMac}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_universite}" for="universite" />
+                        <p:selectOneMenu id="universite" value="#{universiteDeviceController.selected.universite}" >
+                            <f:selectItems value="#{universiteController.itemsAvailableSelectOne}"
+                                           var="universiteItem"
+                                           itemValue="#{universiteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateUniversiteDeviceLabel_confirmationUniv}" for="confirmationUniv" />
+                        <p:selectOneMenu id="confirmationUniv" value="#{universiteDeviceController.selected.confirmationUniv}" >
+                            <f:selectItems value="#{confirmationUnivController.itemsAvailableSelectOne}"
+                                           var="confirmationUnivItem"
+                                           itemValue="#{confirmationUnivItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{universiteDeviceController.create}" value="#{bundle.Save}" update="display,:UniversiteDeviceListForm:datalist,:growl" oncomplete="handleSubmit(args,'UniversiteDeviceCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UniversiteDeviceCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

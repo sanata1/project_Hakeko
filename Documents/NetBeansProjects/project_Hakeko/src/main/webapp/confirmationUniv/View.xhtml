@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConfirmationUnivViewDlg" widgetVar="ConfirmationUnivViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewConfirmationUnivTitle}">
+            <h:form id="ConfirmationUnivViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{confirmationUnivController.selected != null}">
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_id}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.id}" title="#{bundle.ViewConfirmationUnivTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_nom}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.nom}" title="#{bundle.ViewConfirmationUnivTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_description}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.description}" title="#{bundle.ViewConfirmationUnivTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_email}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.email}" title="#{bundle.ViewConfirmationUnivTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_tel}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.tel}" title="#{bundle.ViewConfirmationUnivTitle_tel}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_login}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.login}" title="#{bundle.ViewConfirmationUnivTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_password}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.password}" title="#{bundle.ViewConfirmationUnivTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_numAutorisation}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.numAutorisation}" title="#{bundle.ViewConfirmationUnivTitle_numAutorisation}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_raisonSocial}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.raisonSocial}" title="#{bundle.ViewConfirmationUnivTitle_raisonSocial}"/>
+                        <h:outputText value="#{bundle.ViewConfirmationUnivLabel_ville}"/>
+                        <h:outputText value="#{confirmationUnivController.selected.ville}" title="#{bundle.ViewConfirmationUnivTitle_ville}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConfirmationUnivViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

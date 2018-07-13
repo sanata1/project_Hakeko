@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PieceInscriptionCreateDlg" widgetVar="PieceInscriptionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePieceInscriptionTitle}">
+            <h:form id="PieceInscriptionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pieceInscriptionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePieceInscriptionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pieceInscriptionController.selected.id}" title="#{bundle.CreatePieceInscriptionTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreatePieceInscriptionLabel_nombreDemande}" for="nombreDemande" />
+                        <p:inputText id="nombreDemande" value="#{pieceInscriptionController.selected.nombreDemande}" title="#{bundle.CreatePieceInscriptionTitle_nombreDemande}" />
+                        <p:outputLabel value="#{bundle.CreatePieceInscriptionLabel_inscription}" for="inscription" />
+                        <p:selectOneMenu id="inscription" value="#{pieceInscriptionController.selected.inscription}" >
+                            <f:selectItems value="#{inscriptionController.itemsAvailableSelectOne}"
+                                           var="inscriptionItem"
+                                           itemValue="#{inscriptionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pieceInscriptionController.create}" value="#{bundle.Save}" update="display,:PieceInscriptionListForm:datalist,:growl" oncomplete="handleSubmit(args,'PieceInscriptionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PieceInscriptionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

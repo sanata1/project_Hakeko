@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UniversiteCreateDlg" widgetVar="UniversiteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUniversiteTitle}">
+            <h:form id="UniversiteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{universiteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{universiteController.selected.id}" title="#{bundle.CreateUniversiteTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{universiteController.selected.nom}" title="#{bundle.CreateUniversiteTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{universiteController.selected.description}" title="#{bundle.CreateUniversiteTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{universiteController.selected.email}" title="#{bundle.CreateUniversiteTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{universiteController.selected.tel}" title="#{bundle.CreateUniversiteTitle_tel}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{universiteController.selected.login}" title="#{bundle.CreateUniversiteTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{universiteController.selected.password}" title="#{bundle.CreateUniversiteTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_numAutorisation}" for="numAutorisation" />
+                        <p:inputText id="numAutorisation" value="#{universiteController.selected.numAutorisation}" title="#{bundle.CreateUniversiteTitle_numAutorisation}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_raisonSocial}" for="raisonSocial" />
+                        <p:inputText id="raisonSocial" value="#{universiteController.selected.raisonSocial}" title="#{bundle.CreateUniversiteTitle_raisonSocial}" />
+                        <p:outputLabel value="#{bundle.CreateUniversiteLabel_ville}" for="ville" />
+                        <p:selectOneMenu id="ville" value="#{universiteController.selected.ville}" >
+                            <f:selectItems value="#{villeController.itemsAvailableSelectOne}"
+                                           var="villeItem"
+                                           itemValue="#{villeItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{universiteController.create}" value="#{bundle.Save}" update="display,:UniversiteListForm:datalist,:growl" oncomplete="handleSubmit(args,'UniversiteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UniversiteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

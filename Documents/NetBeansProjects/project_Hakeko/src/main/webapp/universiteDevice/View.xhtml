@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UniversiteDeviceViewDlg" widgetVar="UniversiteDeviceViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUniversiteDeviceTitle}">
+            <h:form id="UniversiteDeviceViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{universiteDeviceController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_id}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.id}" title="#{bundle.ViewUniversiteDeviceTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_browser}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.browser}" title="#{bundle.ViewUniversiteDeviceTitle_browser}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_operatingSystem}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.operatingSystem}" title="#{bundle.ViewUniversiteDeviceTitle_operatingSystem}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_deviceCategorie}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.deviceCategorie}" title="#{bundle.ViewUniversiteDeviceTitle_deviceCategorie}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_adressIp}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.adressIp}" title="#{bundle.ViewUniversiteDeviceTitle_adressIp}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_adressMac}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.adressMac}" title="#{bundle.ViewUniversiteDeviceTitle_adressMac}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_universite}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.universite}" title="#{bundle.ViewUniversiteDeviceTitle_universite}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteDeviceLabel_confirmationUniv}"/>
+                        <h:outputText value="#{universiteDeviceController.selected.confirmationUniv}" title="#{bundle.ViewUniversiteDeviceTitle_confirmationUniv}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UniversiteDeviceViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

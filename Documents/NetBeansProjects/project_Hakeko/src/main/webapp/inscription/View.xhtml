@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InscriptionViewDlg" widgetVar="InscriptionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInscriptionTitle}">
+            <h:form id="InscriptionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{inscriptionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_id}"/>
+                        <h:outputText value="#{inscriptionController.selected.id}" title="#{bundle.ViewInscriptionTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_etat}"/>
+                        <h:outputText value="#{inscriptionController.selected.etat}" title="#{bundle.ViewInscriptionTitle_etat}"/>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_dateInscription}"/>
+                        <h:outputText value="#{inscriptionController.selected.dateInscription}" title="#{bundle.ViewInscriptionTitle_dateInscription}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_etudiant}"/>
+                        <h:outputText value="#{inscriptionController.selected.etudiant}" title="#{bundle.ViewInscriptionTitle_etudiant}"/>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_universite}"/>
+                        <h:outputText value="#{inscriptionController.selected.universite}" title="#{bundle.ViewInscriptionTitle_universite}"/>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_pieceInscription}"/>
+                        <h:outputText value="#{inscriptionController.selected.pieceInscription}" title="#{bundle.ViewInscriptionTitle_pieceInscription}"/>
+                        <h:outputText value="#{bundle.ViewInscriptionLabel_confirmationUniv}"/>
+                        <h:outputText value="#{inscriptionController.selected.confirmationUniv}" title="#{bundle.ViewInscriptionTitle_confirmationUniv}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InscriptionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

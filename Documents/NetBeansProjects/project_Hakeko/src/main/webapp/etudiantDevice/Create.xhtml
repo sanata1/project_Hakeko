@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtudiantDeviceCreateDlg" widgetVar="EtudiantDeviceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEtudiantDeviceTitle}">
+            <h:form id="EtudiantDeviceCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etudiantDeviceController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etudiantDeviceController.selected.id}" title="#{bundle.CreateEtudiantDeviceTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_browser}" for="browser" />
+                        <p:inputText id="browser" value="#{etudiantDeviceController.selected.browser}" title="#{bundle.CreateEtudiantDeviceTitle_browser}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_operatingSystem}" for="operatingSystem" />
+                        <p:inputText id="operatingSystem" value="#{etudiantDeviceController.selected.operatingSystem}" title="#{bundle.CreateEtudiantDeviceTitle_operatingSystem}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_deviceCategorie}" for="deviceCategorie" />
+                        <p:inputText id="deviceCategorie" value="#{etudiantDeviceController.selected.deviceCategorie}" title="#{bundle.CreateEtudiantDeviceTitle_deviceCategorie}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_adressIp}" for="adressIp" />
+                        <p:inputText id="adressIp" value="#{etudiantDeviceController.selected.adressIp}" title="#{bundle.CreateEtudiantDeviceTitle_adressIp}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_adressMac}" for="adressMac" />
+                        <p:inputText id="adressMac" value="#{etudiantDeviceController.selected.adressMac}" title="#{bundle.CreateEtudiantDeviceTitle_adressMac}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantDeviceLabel_etudiant}" for="etudiant" />
+                        <p:selectOneMenu id="etudiant" value="#{etudiantDeviceController.selected.etudiant}" >
+                            <f:selectItems value="#{etudiantController.itemsAvailableSelectOne}"
+                                           var="etudiantItem"
+                                           itemValue="#{etudiantItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etudiantDeviceController.create}" value="#{bundle.Save}" update="display,:EtudiantDeviceListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtudiantDeviceCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtudiantDeviceCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UniversiteViewDlg" widgetVar="UniversiteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUniversiteTitle}">
+            <h:form id="UniversiteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{universiteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_id}"/>
+                        <h:outputText value="#{universiteController.selected.id}" title="#{bundle.ViewUniversiteTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_nom}"/>
+                        <h:outputText value="#{universiteController.selected.nom}" title="#{bundle.ViewUniversiteTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_description}"/>
+                        <h:outputText value="#{universiteController.selected.description}" title="#{bundle.ViewUniversiteTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_email}"/>
+                        <h:outputText value="#{universiteController.selected.email}" title="#{bundle.ViewUniversiteTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_tel}"/>
+                        <h:outputText value="#{universiteController.selected.tel}" title="#{bundle.ViewUniversiteTitle_tel}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_login}"/>
+                        <h:outputText value="#{universiteController.selected.login}" title="#{bundle.ViewUniversiteTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_password}"/>
+                        <h:outputText value="#{universiteController.selected.password}" title="#{bundle.ViewUniversiteTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_numAutorisation}"/>
+                        <h:outputText value="#{universiteController.selected.numAutorisation}" title="#{bundle.ViewUniversiteTitle_numAutorisation}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_raisonSocial}"/>
+                        <h:outputText value="#{universiteController.selected.raisonSocial}" title="#{bundle.ViewUniversiteTitle_raisonSocial}"/>
+                        <h:outputText value="#{bundle.ViewUniversiteLabel_ville}"/>
+                        <h:outputText value="#{universiteController.selected.ville}" title="#{bundle.ViewUniversiteTitle_ville}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UniversiteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

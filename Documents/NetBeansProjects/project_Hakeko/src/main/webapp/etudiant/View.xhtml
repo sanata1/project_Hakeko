@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtudiantViewDlg" widgetVar="EtudiantViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEtudiantTitle}">
+            <h:form id="EtudiantViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etudiantController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_id}"/>
+                        <h:outputText value="#{etudiantController.selected.id}" title="#{bundle.ViewEtudiantTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_nom}"/>
+                        <h:outputText value="#{etudiantController.selected.nom}" title="#{bundle.ViewEtudiantTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_prenom}"/>
+                        <h:outputText value="#{etudiantController.selected.prenom}" title="#{bundle.ViewEtudiantTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_dateNaissance}"/>
+                        <h:outputText value="#{etudiantController.selected.dateNaissance}" title="#{bundle.ViewEtudiantTitle_dateNaissance}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_email}"/>
+                        <h:outputText value="#{etudiantController.selected.email}" title="#{bundle.ViewEtudiantTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_tel}"/>
+                        <h:outputText value="#{etudiantController.selected.tel}" title="#{bundle.ViewEtudiantTitle_tel}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_login}"/>
+                        <h:outputText value="#{etudiantController.selected.login}" title="#{bundle.ViewEtudiantTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_password}"/>
+                        <h:outputText value="#{etudiantController.selected.password}" title="#{bundle.ViewEtudiantTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_nationalite}"/>
+                        <h:outputText value="#{etudiantController.selected.nationalite}" title="#{bundle.ViewEtudiantTitle_nationalite}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_dernierDiplome}"/>
+                        <h:outputText value="#{etudiantController.selected.dernierDiplome}" title="#{bundle.ViewEtudiantTitle_dernierDiplome}"/>
+                        <h:outputText value="#{bundle.ViewEtudiantLabel_domaine}"/>
+                        <h:outputText value="#{etudiantController.selected.domaine}" title="#{bundle.ViewEtudiantTitle_domaine}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtudiantViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

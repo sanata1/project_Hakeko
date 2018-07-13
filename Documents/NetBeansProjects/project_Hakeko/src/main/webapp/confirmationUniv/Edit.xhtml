@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConfirmationUnivEditDlg" widgetVar="ConfirmationUnivEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConfirmationUnivTitle}">
+            <h:form id="ConfirmationUnivEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{confirmationUnivController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{confirmationUnivController.selected.id}" title="#{bundle.EditConfirmationUnivTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{confirmationUnivController.selected.nom}" title="#{bundle.EditConfirmationUnivTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{confirmationUnivController.selected.description}" title="#{bundle.EditConfirmationUnivTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{confirmationUnivController.selected.email}" title="#{bundle.EditConfirmationUnivTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{confirmationUnivController.selected.tel}" title="#{bundle.EditConfirmationUnivTitle_tel}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{confirmationUnivController.selected.login}" title="#{bundle.EditConfirmationUnivTitle_login}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{confirmationUnivController.selected.password}" title="#{bundle.EditConfirmationUnivTitle_password}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_numAutorisation}" for="numAutorisation" />
+                        <p:inputText id="numAutorisation" value="#{confirmationUnivController.selected.numAutorisation}" title="#{bundle.EditConfirmationUnivTitle_numAutorisation}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_raisonSocial}" for="raisonSocial" />
+                        <p:inputText id="raisonSocial" value="#{confirmationUnivController.selected.raisonSocial}" title="#{bundle.EditConfirmationUnivTitle_raisonSocial}" />
+                        <p:outputLabel value="#{bundle.EditConfirmationUnivLabel_ville}" for="ville" />
+                        <p:selectOneMenu id="ville" value="#{confirmationUnivController.selected.ville}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{villeController.itemsAvailableSelectOne}"
+                                           var="villeItem"
+                                           itemValue="#{villeItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{confirmationUnivController.update}" value="#{bundle.Save}" update="display,:ConfirmationUnivListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConfirmationUnivEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConfirmationUnivEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

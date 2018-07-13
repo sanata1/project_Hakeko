@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtudiantCreateDlg" widgetVar="EtudiantCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEtudiantTitle}">
+            <h:form id="EtudiantCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etudiantController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etudiantController.selected.id}" title="#{bundle.CreateEtudiantTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{etudiantController.selected.nom}" title="#{bundle.CreateEtudiantTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{etudiantController.selected.prenom}" title="#{bundle.CreateEtudiantTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_dateNaissance}" for="dateNaissance" />
+                        <p:inputText id="dateNaissance" value="#{etudiantController.selected.dateNaissance}" title="#{bundle.CreateEtudiantTitle_dateNaissance}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{etudiantController.selected.email}" title="#{bundle.CreateEtudiantTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{etudiantController.selected.tel}" title="#{bundle.CreateEtudiantTitle_tel}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{etudiantController.selected.login}" title="#{bundle.CreateEtudiantTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{etudiantController.selected.password}" title="#{bundle.CreateEtudiantTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_nationalite}" for="nationalite" />
+                        <p:selectOneMenu id="nationalite" value="#{etudiantController.selected.nationalite}" >
+                            <f:selectItems value="#{nationaliteController.itemsAvailableSelectOne}"
+                                           var="nationaliteItem"
+                                           itemValue="#{nationaliteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_dernierDiplome}" for="dernierDiplome" />
+                        <p:selectOneMenu id="dernierDiplome" value="#{etudiantController.selected.dernierDiplome}" >
+                            <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}"
+                                           var="dernierDiplomeItem"
+                                           itemValue="#{dernierDiplomeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEtudiantLabel_domaine}" for="domaine" />
+                        <p:selectOneMenu id="domaine" value="#{etudiantController.selected.domaine}" >
+                            <f:selectItems value="#{domaineController.itemsAvailableSelectOne}"
+                                           var="domaineItem"
+                                           itemValue="#{domaineItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etudiantController.create}" value="#{bundle.Save}" update="display,:EtudiantListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtudiantCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtudiantCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
